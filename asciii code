@@ -1,0 +1,40 @@
+# Functions for different ASCII styles
+
+def simple_banner(text):
+    # Simple banner around text
+    border = "*" * (len(text) + 4)
+    return f"{border}\n* {text} *\n{border}"
+
+def box_style(text):
+    # Box around the text
+    line = "+" + "-" * (len(text) + 2) + "+"
+    return f"{line}\n| {text} |\n{line}"
+
+
+def main():
+    print("=== ASCII Art Generator ===")
+    print("1. Simple Banner")
+    print("2. Box Style")
+    print("3. PyFiglet (if installed)")
+    
+    choice = input("Choose option (1-3): ")
+    text = input("Enter text: ")
+    
+    if choice == '1':
+        print(simple_banner(text))
+    elif choice == '2':
+        print(box_style(text))
+    elif choice == '3':
+        try:
+            import pyfiglet
+            result = pyfiglet.figlet_format(text)
+            print(result)
+        except ImportError:
+            print("PyFiglet not installed. Run: pip install pyfiglet")
+    else:
+        print("Invalid choice")
+
+
+if __name__ == "__main__":
+    main()
+
